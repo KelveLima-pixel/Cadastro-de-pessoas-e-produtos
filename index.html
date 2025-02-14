@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="./logo emanus.png" alt="logo">
+        </h1>
+    </header>
+    
+    <main> 
+        <!-- Formulário de Cadastro -->
+        <section> 
+            <h2> <i>Cadastrar Pessoa e Produto</i> </h2>
+            <form id="cadastroForm"> 
+                <label for="nomeCliente">Nome do Cliente:</label>
+                <input type="text" id="nomeCliente" placeholder="Digite o nome do cliente" required> 
+                
+                <label for="contatoCliente">Contato:</label> 
+                <input type="text" id="contatoCliente" placeholder="Digite o contato do cliente" required> 
+                
+                <label for="enderecoCliente">Endereço:</label> 
+                <input type="text" id="enderecoCliente" placeholder="Cep, bairro, rua, número" required> 
+                
+                <label for="marcaProduto">Marca do Produto:</label> 
+                <input type="text" id="marcaProduto" placeholder="Digite a marca do produto" required> 
+                
+                <label for="serieProduto">Série do Produto:</label> 
+                <input type="text" id="serieProduto" placeholder="Digite a série do produto" required> 
+
+                <label for="valordoserviço">Valor do Serviço:</label> 
+                <input type="text" id="valordoserviço" placeholder="Digite o valor do serviço" required> 
+                
+                <button type="submit">Cadastrar</button> 
+            </form> 
+        </section> 
+
+        <!-- Lista de Pessoas e Produtos --> 
+        <section> 
+            <h2>Lista de Pessoas e Produtos Cadastrados</h2> 
+            <ul id="listaCadastro"></ul> 
+        </section> 
+    </main> 
+    
+    <script src="script.js"></script> 
+</body>
+
+</html>
