@@ -123,6 +123,290 @@ function adicionarCadastro(event) {
     cadastroForm.reset();
 }
 
+// Adaptação do código
+// ----------- Gestão Financeira -----------
+
+// Salvar transação no LocalStorage
+function salvarTransacao(transacao) {
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.push(transacao);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+}
+
+// Exibir transações
+function exibirTransacoes() {
+    const transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    const tabelaBody = document.querySelector("#tabelaFinanceira tbody");
+    let saldo = 0;
+
+    tabelaBody.innerHTML = "";
+
+    transacoes.forEach(t => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${t.descricao}</td>
+            <td>${t.tipo}</td>
+            <td>R$ ${parseFloat(t.valor).toFixed(2)}</td>
+        `;
+        tabelaBody.appendChild(row);
+
+        // Calcula saldo
+        if (t.tipo === "receita") {
+            saldo += parseFloat(t.valor);
+        } else {
+            saldo -= parseFloat(t.valor);
+        }
+    });
+
+    document.getElementById("saldo").textContent = `Saldo: R$ ${saldo.toFixed(2)}`;
+}
+
+// Adicionar nova transação
+function adicionarTransacao(event) {
+    event.preventDefault();
+
+    const descricao = document.getElementById("descricao").value;
+    const tipo = document.getElementById("tipo").value;
+    const valor = document.getElementById("valor").value;
+
+    const transacao = { descricao, tipo, valor };
+
+    salvarTransacao(transacao);
+    exibirTransacoes();
+
+    document.getElementById("financeForm").reset();
+}
+
+// ----------- Gestão Financeira -----------
+
+// Salvar transação no LocalStorage
+function salvarTransacao(transacao) {
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.push(transacao);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+}
+
+// Exibir transações
+function exibirTransacoes() {
+    const transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    const tabelaBody = document.querySelector("#tabelaFinanceira tbody");
+    let saldo = 0;
+
+    tabelaBody.innerHTML = "";
+
+    transacoes.forEach((t, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${t.descricao}</td>
+            <td class="${t.tipo}">${t.tipo.charAt(0).toUpperCase() + t.tipo.slice(1)}</td>
+            <td class="${t.tipo}">R$ ${parseFloat(t.valor).toFixed(2)}</td>
+            <td><button onclick="apagarTransacao(${index})">❌</button></td>
+        `;
+        tabelaBody.appendChild(row);
+
+        // Calcula saldo
+        if (t.tipo === "receita") {
+            saldo += parseFloat(t.valor);
+        } else {
+            saldo -= parseFloat(t.valor);
+        }
+    });
+
+    // Atualiza saldo com cor
+    const saldoElement = document.getElementById("saldo");
+    saldoElement.textContent = `Saldo: R$ ${saldo.toFixed(2)}`;
+    saldoElement.style.color = saldo >= 0 ? "limegreen" : "red";
+}
+
+// Adicionar nova transação
+function adicionarTransacao(event) {
+    event.preventDefault();
+
+    const descricao = document.getElementById("descricao").value;
+    const tipo = document.getElementById("tipo").value;
+    const valor = document.getElementById("valor").value;
+
+    const transacao = { descricao, tipo, valor };
+
+    salvarTransacao(transacao);
+    exibirTransacoes();
+
+    document.getElementById("financeForm").reset();
+}
+
+// Apagar transação
+function apagarTransacao(index) {
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.splice(index, 1);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+    exibirTransacoes();
+}
+
+// ----------- Gestão Financeira com Impostos -----------
+
+// Salvar transação no LocalStorage
+function salvarTransacao(transacao) {
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.push(transacao);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+}
+
+// Exibir transações
+function exibirTransacoes() {
+    const transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    const tabelaBody = document.querySelector("#tabelaFinanceira tbody");
+    let saldo = 0;
+
+    tabelaBody.innerHTML = "";
+
+    transacoes.forEach((t, index) => {
+        let valorBruto = parseFloat(t.valor);
+        let imposto = 0;
+        let valorLiquido = valorBruto;
+
+        if (t.tipo === "receita") {
+            imposto = (valorBruto * t.imposto) / 100;
+            valorLiquido = valorBruto - imposto;
+        }
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${t.descricao}</td>
+            <td class="${t.tipo}">${t.tipo.charAt(0).toUpperCase() + t.tipo.slice(1)}</td>
+            <td>R$ ${valorBruto.toFixed(2)}</td>
+            <td>R$ ${imposto.toFixed(2)}</td>
+            <td class="liquido">R$ ${valorLiquido.toFixed(2)}</td>
+            <td><button onclick="apagarTransacao(${index})">❌</button></td>
+        `;
+        tabelaBody.appendChild(row);
+
+        // Calcula saldo usando o valor líquido
+        if (t.tipo === "receita") {
+            saldo += valorLiquido;
+        } else {
+            saldo -= valorBruto;
+        }
+    });
+
+    // Atualiza saldo com cor
+    const saldoElement = document.getElementById("saldo");
+    saldoElement.textContent = `Saldo: R$ ${saldo.toFixed(2)}`;
+    saldoElement.style.color = saldo >= 0 ? "limegreen" : "red";
+}
+
+// Adicionar nova transação
+function adicionarTransacao(event) {
+    event.preventDefault();
+
+    const descricao = document.getElementById("descricao").value;
+    const tipo = document.getElementById("tipo").value;
+    const valor = document.getElementById("valor").value;
+    const imposto = parseFloat(document.getElementById("imposto").value);
+
+    const transacao = { descricao, tipo, valor, imposto };
+
+    salvarTransacao(transacao);
+    exibirTransacoes();
+
+    document.getElementById("financeForm").reset();
+}
+
+// Apagar transação
+function apagarTransacao(index) {
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.splice(index, 1);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+    exibirTransacoes();
+}
+
+// Complemento
+// Função para alternar abas
+function abrirAba(abaId) {
+    document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(abaId).classList.add("active");
+    document.querySelector(`.tab-btn[onclick="abrirAba('${abaId}')"]`).classList.add("active");
+
+    if (abaId === "historico") {
+        exibirHistorico();
+    }
+}
+
+// Exibir histórico financeiro
+function exibirHistorico() {
+    const transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    const tabelaBody = document.querySelector("#tabelaHistorico tbody");
+
+    tabelaBody.innerHTML = "";
+
+    transacoes.forEach(t => {
+        const data = new Date(t.data).toLocaleString("pt-BR"); // converte a data
+        let valorBruto = parseFloat(t.valor);
+        let imposto = t.tipo === "receita" ? (valorBruto * t.imposto)/100 : 0;
+        let valorLiquido = t.tipo === "receita" ? valorBruto - imposto : valorBruto;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${data}</td>
+            <td>${t.descricao}</td>
+            <td>${t.tipo}</td>
+            <td>R$ ${valorBruto.toFixed(2)}</td>
+            <td>R$ ${imposto.toFixed(2)}</td>
+            <td>R$ ${valorLiquido.toFixed(2)}</td>
+        `;
+        tabelaBody.appendChild(row);
+    });
+}
+
+// Modificar função adicionarTransacao para salvar a data
+function adicionarTransacao(event) {
+    event.preventDefault();
+
+    const descricao = document.getElementById("descricao").value;
+    const tipo = document.getElementById("tipo").value;
+    const valor = document.getElementById("valor").value;
+    const imposto = parseFloat(document.getElementById("imposto").value);
+    const data = new Date();
+
+    const transacao = { descricao, tipo, valor, imposto, data };
+
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.push(transacao);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+
+    exibirTransacoes();
+    document.getElementById("financeForm").reset();
+}
+
+// Excluir transação
+function apagarTransacao(index) {
+    let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+    transacoes.splice(index, 1);
+    localStorage.setItem("transacoes", JSON.stringify(transacoes));
+    exibirTransacoes();
+}
+
+// Eventos
+document.getElementById("financeForm").addEventListener("submit", adicionarTransacao);
+document.addEventListener("DOMContentLoaded", exibirTransacoes);
+
+
+// Eventos
+document.getElementById("financeForm").addEventListener("submit", adicionarTransacao);
+document.addEventListener("DOMContentLoaded", exibirTransacoes);
+
+
+// Eventos
+document.getElementById("financeForm").addEventListener("submit", adicionarTransacao);
+document.addEventListener("DOMContentLoaded", exibirTransacoes);
+
+
+// Eventos
+document.getElementById("financeForm").addEventListener("submit", adicionarTransacao);
+document.addEventListener("DOMContentLoaded", exibirTransacoes);
+
+
 // Event Listener para capturar os dados do formulário
 const cadastroForm = document.getElementById("cadastroForm");
 const listaCadastro = document.getElementById("listaCadastro");
