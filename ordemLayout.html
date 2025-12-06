@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordem de Serviço</title>
+  <link rel="stylesheet" href="ordemLayout.css">
+</head>
+<body>
+
+  <main class="os-container">
+    <header class="os-header">
+      <div class="empresa">
+        <h2>Nome da Empresa</h2>
+        <p class="endereco">Rua Exemplo, 123 - Bairro - Cidade / UF</p>
+        <p class="contato">(00) 0000-0000 • contato@empresa.com</p>
+      </div>
+      <div class="os-meta">
+        <h3>Ordem de Serviço</h3>
+        <p><strong>Nº:</strong> <span id="os-number">0001</span></p>
+        <p><strong>Data:</strong> <span id="os-date">01/01/2025</span></p>
+      </div>
+    </header>
+
+    <!-- Formulário de Ordem de Serviço -->
+    <form id="os-form" class="bg-white p-4 rounded-2xl shadow-md">
+            <!-- Linha 1: Cliente + Telefone + Email + Aparelho -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="os-cliente">Cliente <span class="required">*</span></label>
+                    <input type="text" id="os-cliente" name="os-cliente" placeholder="Nome do cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="os-telefone">Telefone</label>
+                    <input type="text" id="os-telefone" name="os-telefone" placeholder="Telefone">
+                </div>
+                <div class="form-group">
+                    <label for="os-email">Email</label>
+                    <input type="email" id="os-email" name="os-email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="os-aparelho">Aparelho <span class="required">*</span></label>
+                    <input type="text" id="os-aparelho" name="os-aparelho" placeholder="Ex: Celular, Notebook" required>
+                </div>
+            </div>
+
+            <!-- Linha 2: Marca + Diagnóstico + Solução + Valor + Prioridade -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="os-marca">Marca <span class="required">*</span></label>
+                    <input type="text" id="os-marca" name="os-marca" placeholder="Marca" required>
+                </div>
+                <div class="form-group">
+                    <label for="os-diagnostico">Diagnóstico</label>
+                    <input type="text" id="os-diagnostico" name="os-diagnostico" placeholder="Diagnóstico">
+                </div>
+                <div class="form-group">
+                    <label for="os-solucao">Solução</label>
+                    <input type="text" id="os-solucao" name="os-solucao" placeholder="Solução">
+                </div>
+                <div class="form-group">
+                    <label for="os-valor">Valor (R$)</label>
+                    <input type="number" id="os-valor" name="os-valor" placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="os-prioridade">Prioridade</label>
+                    <select id="os-prioridade" name="os-prioridade">
+                        <option>Baixa</option>
+                        <option>Média</option>
+                        <option>Alta</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Linha 3: CEP + Rua + Número + Bairro -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="os-cep">CEP <span class="required">*</span></label>
+                    <input type="text" id="os-cep" name="os-cep" placeholder="CEP" required>
+                </div>
+                <div class="form-group" style="flex: 2;">
+                    <label for="os-rua">Rua</label>
+                    <input type="text" id="os-rua" name="os-rua" placeholder="Nome da rua">
+                </div>
+                <div class="form-group">
+                    <label for="os-numero">Número</label>
+                    <input type="text" id="os-numero" name="os-numero" placeholder="Nº">
+                </div>
+                <div class="form-group">
+                    <label for="os-bairro">Bairro</label>
+                    <input type="text" id="os-bairro" name="os-bairro" placeholder="Bairro">
+                </div>
+            </div>
+
+            <!-- Linha 4: Referência + Cidade + Estado -->
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;">
+                    <label for="os-referencia">Referência</label>
+                    <input type="text" id="os-referencia" name="os-referencia" placeholder="Referência">
+                </div>
+                <div class="form-group" style="flex: 2;">
+                    <label for="os-cidade">Cidade</label>
+                    <input type="text" id="os-cidade" name="os-cidade" placeholder="Cidade">
+                </div>
+                <div class="form-group">
+                    <label for="os-estado">Estado</label>
+                    <input type="text" id="os-estado" name="os-estado" placeholder="UF">
+                </div>
+            </div>
+
+            <!-- Linha 5: Data Entrada + Data Saída + Observações -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="os-data-entrada">Data de Entrada</label>
+                    <input type="date" id="os-data-entrada" name="os-data-entrada">
+                </div>
+                <div class="form-group">
+                    <label for="os-data-saida">Data de Saída Estimada</label>
+                    <input type="date" id="os-data-saida" name="os-data-saida">
+                </div>
+                <div class="form-group" style="flex: 2;">
+                    <label for="os-observacoes">Observações</label>
+                    <input type="text" id="os-observacoes" name="os-observacoes" placeholder="Observações">
+                </div>
+            </div>
+
+            <!-- Linha 6: Status + Colaborador -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="os-status">Status</label>
+                    <select id="os-status" name="os-status">
+                        <option>Pendente</option>
+                        <option>Em andamento</option>
+                        <option>Concluído</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="os-colaborador">Colaborador</label>
+                    <input type="text" id="os-colaborador" name="os-colaborador" placeholder="Nome do colaborador">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Salvar OS</button>
+        </form>
+
+         <section class="os-section observacoes">
+              <h4>Observações</h4>
+              <p id="os-observacoes">Observações adicionais...</p>
+            </section>
+        
+            <section class="os-section assinaturas">
+              <div class="assinatura cliente-assinatura">
+                <p>__________________________________</p>
+                <p><strong>Assinatura do Cliente</strong></p>
+              </div>
+              <div class="assinatura tecnico-assinatura">
+                <p>__________________________________</p>
+                <p><strong>Assinatura do Técnico</strong></p>
+              </div>
+            </section>
+        
+            <footer class="os-footer">
+              <p class="observacao-legal">Ao assinar, o cliente concorda com os termos de orçamento e autorização de serviços descritos nesta ordem de serviço.</p>
+    </footer>
+  </main>
+
+</body>
+</html>

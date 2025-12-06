@@ -1,0 +1,304 @@
+/* ====== ESTILO GERAL ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #f3f6fa;
+  color: #333;
+}
+
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh; /* ocupa toda a altura da tela */
+  background-color: #1e1e2f; /* cor de fundo */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* ===== LOGO ===== */
+.sidebar .logo {
+  text-align: center;
+  padding: 28px 10px;
+  background-color: #29293d; /* Cor clara va parte da logo*/
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .logo h2 {
+  font-size: 1.4rem;
+  color: #4CAF50;
+  margin: 0;
+}
+
+/* ===== MENU ===== */
+.sidebar .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0px;
+}
+
+.sidebar .menu ul li {
+  margin: 5px 0;
+}
+
+.sidebar .menu ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar .menu ul li a img {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  filter: brightness(0) invert(1); /* deixa os ícones brancos */
+  transition: transform 0.2s;
+}
+
+/* ===== HOVER ===== */
+.sidebar .menu ul li a:hover {
+  background-color: #33334d;
+  color: #fff;
+}
+
+.sidebar .menu ul li a:hover img {
+  transform: scale(1.1);
+}
+
+/* ===== LINK ATIVO ===== */
+.sidebar .menu ul li.active a {
+  background-color: #4CAF50;
+  color: #fff;
+  font-weight: bold;
+}
+
+.sidebar .menu ul li.active a img {
+  filter: brightness(0) invert(1);
+}
+
+/* ====== CONTEÚDO PRINCIPAL ====== */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  color: #222;
+}
+
+.btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+/* ====== BARRA DE PESQUISA ====== */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* ==================== FINANCEIRO ==================== */
+
+#financeiro {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#financeiro h2 {
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* === Formulário === */
+#financeiro-form {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
+}
+
+#financeiro-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+#financeiro-form label {
+  font-weight: 500;
+  color: #374151;
+}
+
+#financeiro-form input,
+#financeiro-form select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: 0.3s;
+  font-size: 0.95rem;
+  background-color: #f9fafb;
+}
+
+#financeiro-form input:focus,
+#financeiro-form select:focus {
+  border-color: #6366f1;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+}
+
+#financeiro-form button {
+  background-color: #6366f1;
+  color: white;
+  font-weight: 500;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 1rem auto 0;
+}
+
+#financeiro-form button:hover {
+  background-color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* === Cards Resumo === */
+#financeiro .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+#financeiro .grid div {
+  transition: all 0.3s ease;
+}
+
+#financeiro .grid div:hover {
+  transform: scale(1.03);
+}
+
+/* === Cores e Textos === */
+#financeiro .bg-green-50 {
+  background-color: #ecfdf5;
+}
+#financeiro .bg-red-50 {
+  background-color: #fef2f2;
+}
+#financeiro .bg-blue-50 {
+  background-color: #eff6ff;
+}
+
+#financeiro h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#financeiro p {
+  font-size: 1.2rem;
+}
+
+/* === Lista de Lançamentos === */
+#lista-financeira {
+  margin-top: 2rem;
+}
+
+.lancamento-card {
+  background: #f8fafc;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  padding: 1rem;
+  transition: 0.3s;
+}
+
+.lancamento-card:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+
+.lancamento-card.entrada {
+  border-left: 5px solid #10b981;
+}
+.lancamento-card.saida {
+  border-left: 5px solid #ef4444;
+}
+
+.lancamento-card h4 {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.lancamento-card p {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+/* === Animação === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

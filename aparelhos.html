@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aparelhos</title>
+  <link rel="stylesheet" href="aparelhos.css">
+  
+</head>
+<body>
+
+  <!--Menu Lateral-->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Sistema Fix</h2>
+        </div>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="/Imagens/house.png" alt="Início"> 
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="aparelhos.html" class="active">
+                        <img src="/Imagens/phone.png" alt="Aparelhos"> 
+                        Aparelhos
+                    </a>
+                </li>
+                <li>
+                    <a href="clientes.html">
+                        <img src="/Imagens/contact.png" alt="Clientes"> 
+                        Clientes
+                    </a>
+                </li>
+                <li>
+                    <a href="configuração.html">
+                        <img src="/Imagens/settings.png" alt="Configurações"> 
+                        Configurações
+                    </a>
+                </li>
+                <li>
+                    <a href="ordens.html">
+                        <img src="/Imagens/scroll-text.png" alt="Ordem"> 
+                        Ordem
+                    </a>
+                </li>
+                <li>
+                    <a href="estoque.html">
+                        <img src="/Imagens/boxes.png" alt="Boxes"> 
+                        Estoque
+                    </a>
+                </li>
+                <li>
+                    <a href="financeiro.html">
+                        <img src="/Imagens/badge-dollar-sign.png" alt="Financeiro"> 
+                        Financeiro
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+  <!-- Conteúdo principal -->
+  <main class="content">
+    <header>
+      <h1>Gerenciamento de Aparelhos</h1>
+      <button id="novoAparelhoBtn" class="btn">+ Novo Aparelho</button>
+    </header>
+
+    <!-- Barra de pesquisa -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Pesquisar aparelho...">
+    </div>
+
+    <!-- Lista de aparelhos -->
+    <table id="aparelhosTable">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>IMEI</th>
+          <th>Cor</th>
+          <th>Defeito Informado</th>
+          <th>Estado Físico</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aparelhos serão listados futuramente via JavaScript -->
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Modal de novo aparelho -->
+  <div id="aparelhoModal" class="modal">
+    <div class="modal-content">
+      <h2>Novo Aparelho</h2>
+      <form id="aparelhoForm">
+        <label>Marca</label>
+        <input type="text" id="marca" required>
+
+        <label>Modelo</label>
+        <input type="text" id="modelo" required>
+
+        <label>IMEI</label>
+        <input type="text" id="imei" placeholder="Ex: 356789012345678" required>
+
+        <label>Cor</label>
+        <input type="text" id="cor">
+
+        <label>Defeito informado</label>
+        <textarea id="defeito" required></textarea>
+
+        <label>Estado físico</label>
+        <textarea id="estadoFisico"></textarea>
+
+        <div class="buttons">
+          <button type="submit" class="btn salvar">Salvar</button>
+          <button type="button" id="cancelarBtn" class="btn cancelar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de confirmação -->
+  <div id="modalConfirm" class="modal-confirm">
+    <div class="modal-box">
+      <p id="mensagemConfirmacao"></p>
+      <div class="botoes-confirmacao">
+        <button id="btnConfirmar">Sim</button>
+        <button id="btnCancelar">Não</button>
+      </div>
+    </div>
+  </div>
+
+<script src="aparelhos.js"></script>
+
+</body>
+</html>
+
+

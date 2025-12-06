@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque - EmanusFix</title>
+    <link rel="stylesheet" href="estoque.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+  <aside class="sidebar">
+        <div class="logo">
+            <h2>Sistema Fix</h2>
+        </div>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="/Imagens/house.png" alt="Início"> 
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="aparelhos.html">
+                        <img src="/Imagens/phone.png" alt="Aparelhos"> 
+                        Aparelhos
+                    </a>
+                </li>
+                <li>
+                    <a href="clientes.html">
+                        <img src="/Imagens/contact.png" alt="Clientes"> 
+                        Clientes
+                    </a>
+                </li>
+                <li>
+                    <a href="configuração.html">
+                        <img src="/Imagens/settings.png" alt="Configurações"> 
+                        Configurações
+                    </a>
+                </li>
+                <li>
+                    <a href="ordens.html">
+                        <img src="/Imagens/scroll-text.png" alt="Ordem"> 
+                        Ordem
+                    </a>
+                </li>
+                <li>
+                    <a href="estoque.html" class="active">
+                        <img src="/Imagens/boxes.png" alt="Boxes"> 
+                        Estoque
+                    </a>
+                </li>
+                <li>
+                    <a href="financeiro.html">
+                        <img src="/Imagens/badge-dollar-sign.png" alt="Financeiro"> 
+                        Financeiro
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+  
+ <!-- ==================== CONTROLE DE PEÇAS E ESTOQUE ==================== -->
+    <div class="container">
+        
+        <section id="estoque" class="hidden p-6">
+            <h2 class="text-2xl font-semibold mb-4">Controle de Peças e Estoque</h2>
+
+            <!-- Formulário de cadastro de peças -->
+            <form id="peca-form" class="bg-white p-4 rounded-2xl shadow-md max-w-2xl">
+                <div class="grid grid-cols-2 gap-4">
+
+                <div>
+                    <label for="peca-nome" class="block text-sm font-medium mb-1">Nome da Peça</label>
+                    <input type="text" id="peca-nome" name="peca-nome" placeholder="Ex: Tela Samsung A10" class="w-full border rounded-md p-2">
+                </div>
+
+                <div>
+                    <label for="peca-codigo" class="block text-sm font-medium mb-1">Código</label>
+                    <input type="text" id="peca-codigo" name="peca-codigo" placeholder="Código interno ou fornecedor" class="w-full border rounded-md p-2">
+                </div>
+
+                <div>
+                    <label for="peca-quantidade" class="block text-sm font-medium mb-1">Quantidade</label>
+                    <input type="number" id="peca-quantidade" name="peca-quantidade" placeholder="0" class="w-full border rounded-md p-2">
+                </div>
+
+                <div>
+                    <label for="peca-preco" class="block text-sm font-medium mb-1">Preço de Custo (R$)</label>
+                    <input type="number" id="peca-preco" name="peca-preco" placeholder="0.00" class="w-full border rounded-md p-2">
+                </div>
+
+                <div>
+                    <label for="peca-fornecedor" class="block text-sm font-medium mb-1">Fornecedor</label>
+                    <input type="text" id="peca-fornecedor" name="peca-fornecedor" placeholder="Nome do fornecedor" class="w-full border rounded-md p-2">
+                </div>
+
+                <div>
+                    <label for="peca-status" class="block text-sm font-medium mb-1">Status</label>
+                    <select id="peca-status" name="peca-status" class="w-full border rounded-md p-2">
+                    <option>Disponível</option>
+                    <option>Baixo estoque</option>
+                    <option>Esgotado</option>
+                    </select>
+                </div>
+
+                </div>
+
+                <button type="submit" class="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">
+                Salvar Peça
+                </button>
+            </form>
+
+            <!-- Lista de Peças -->
+            <div id="peca-lista" class="mt-6 space-y-4">
+                <!-- As peças cadastradas aparecerão aqui -->
+            </div>
+        </section>
+        <h2>Controle de Peças e Estoque</h2>
+        <div class="actions">
+            <input type="text" placeholder="Pesquisar produto...">
+            <button>+ Adicionar Produto</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Valor Unitário (R$)</th>
+                    <th>Fornecedor</th>
+                    <th>Data de Entrada</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fonte 12V 5A</td>
+                    <td>Componentes</td>
+                    <td>25</td>
+                    <td>45,00</td>
+                    <td>Eletrônica BR</td>
+                    <td>03/10/2025</td>
+                    <td>
+                        <button>Editar</button>
+                        <button>Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cabo HDMI 2m</td>
+                    <td>Acessórios</td>
+                    <td>40</td>
+                    <td>29,90</td>
+                    <td>TechCabo</td>
+                    <td>05/10/2025</td>
+                    <td>
+                        <button>Editar</button>
+                        <button>Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer">© 2025 Sistema de Controle | Estoque</div>
+    </div>
+</body>
+</html>

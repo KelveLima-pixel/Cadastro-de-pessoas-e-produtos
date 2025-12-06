@@ -1,0 +1,305 @@
+/* ====== ESTILO GERAL ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f3f6fa;
+  color: #333;
+}
+
+/* melhora de renderização da fonte */
+body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh; /* ocupa toda a altura da tela */
+  background-color: #1e1e2f; /* cor de fundo */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* ===== LOGO ===== */
+.sidebar .logo {
+  text-align: center;
+  padding: 28px 10px;
+  background-color: #29293d; /* Cor clara va parte da logo*/
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .logo h2 {
+  font-size: 1.4rem;
+  color: #4CAF50;
+  margin: 0;
+}
+
+/* ===== MENU ===== */
+.sidebar .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0px;
+}
+
+.sidebar .menu ul li {
+  margin: 5px 0;
+}
+
+.sidebar .menu ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar .menu ul li a img {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  filter: brightness(0) invert(1); /* deixa os ícones brancos */
+  transition: transform 0.2s;
+}
+
+/* ===== HOVER ===== */
+.sidebar .menu ul li a:hover {
+  background-color: #33334d;
+  color: #fff;
+}
+
+.sidebar .menu ul li a:hover img {
+  transform: scale(1.1);
+}
+
+/* ===== LINK ATIVO ===== */
+.sidebar .menu ul li.active a {
+  background-color: #4CAF50;
+  color: #fff;
+  font-weight: bold;
+}
+
+.sidebar .menu ul li.active a img {
+  filter: brightness(0) invert(1);
+}
+
+/* ====== CONTEÚDO PRINCIPAL ====== */
+.content {
+  flex: 1;
+  padding: 40px 30px 0px 30px;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
+  margin-left: 237px;
+  gap: 20px;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  color: #222;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+/* ====== BARRA DE PESQUISA ====== */
+.search-bar {
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  right: 32px;
+  width: 360px;
+  max-width: 45%;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+
+/* ==================== ORDEM DE SERVIÇO ==================== */
+
+#ordem-servico {
+  margin-left: 210px; /* leva em conta a sidebar fixa */
+  margin-right: 0px;
+  padding: 28px 18px 28px 32px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#ordem-servico h2 {
+  color: #1e293b;
+  text-align: left;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#os-form {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.04);
+  padding: 14px 25px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+/* Linhas do formulário */
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#os-form label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.required {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+#os-form input,
+#os-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  font-size: 0.9rem;
+  background-color: #f9fafb;
+}
+
+#os-form input:focus, #os-form select:focus {
+  border-color: #3b82f6;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.09);
+}
+
+.btn-submit {
+  background-color: #3b82f6;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.btn-submit:hover {
+  background-color: #2563eb;
+}
+
+/* Lista de ordens: tabela limpa e alinhada com o cartão */
+#os-lista { 
+  margin-top: 20px; 
+}
+
+/* Tabela compacta sem espaçamento entre linhas */
+#os-lista table {
+  width:100%;
+  border-collapse: collapse;
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(2,6,23,0.04);
+}
+
+#os-lista thead th {
+  text-align:left;
+  padding:12px 16px 12px 28px; /* desloca o cabeçalho para a direita */
+  font-weight:600;
+  color:#374151;
+  border-bottom:1px solid #e6e9ee;
+  background:#fafafa;
+}
+
+#os-lista tbody td {
+  padding:14px 16px 14px 28px; /* aumenta padding à esquerda para mover as linhas para a direita */
+  border-bottom:1px solid #f1f5f9;
+  color:#111827;
+}
+
+#os-lista tbody tr:last-child td { border-bottom:none }
+
+.status-badge { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600; font-size:0.85rem }
+.status-badge.pendente { background:#fff4e6; color:#b45309 }
+.status-badge.andamento { background:#b7d0e8; color:#242194 }
+.status-badge.concluido { background:#ecfdf5; color:#15803d }
+
+/* Controls row (search + nova ordem) */
+.controls { display:flex; gap:12px; align-items:center; margin-bottom:16px }
+.controls .search { flex:1; position:relative }
+.controls .search input { width:100%; padding:12px 40px 12px 14px; border-radius:8px; border:1px solid #e6e9ee; background:#fbfdff }
+.controls .search .icon { position:absolute; right:12px; top:50%; transform:translateY(-50%); opacity:0.6 }
+.controls .btn-new { background:#3b82f6; color:#fff; padding:10px 14px; border-radius:8px; font-weight:700; border:none }
+
+/* small helpers */
+.muted { color:#6b7280; font-size:0.92rem }
+
+/* Animação de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

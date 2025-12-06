@@ -1,256 +1,256 @@
-
-:root {
-    --cor0: #ffffff;
-    --cor1: #333;
-    --cor2: #ccc;
-    --cor3: #da1414;
-    --cor4: #555;
-}
-
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 2rem; 
-    padding: 0; 
-    background-color: var(--cor1); 
-    
+* {
+  margin: 0;          /* Remove margens padrão de todos os elementos */
+  padding: 0px;         /* Remove preenchimentos padrão de todos os elementos */
+  box-sizing: border-box;  /* Inclui padding e border na largura/altura total do elemento */
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;  /* Define a família de fontes em ordem de preferência */
 } 
 
-
-header { 
-    background-color: var(--cor0); 
-    color: var(--cor1); 
-    text-align: center; 
-    padding: 10px; 
-    border-radius: 8px;
-} 
-
-img {
-    width: 35%;
-    height: auto;
+body {
+  background: #f3f6fa;;  /* Define um fundo cinza claro para a página */
 }
 
-h1, h2 { 
-    margin: 1rem; 
-    color: var(--cor2);
-} 
-
-
-form { 
-    background: var(--cor0); 
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(1, 0, 0, 0.2); 
-    margin-bottom: 20px; 
-} 
-
-form label { 
-    display: block; 
-    margin-bottom: 7px; 
-    font-weight: bold; 
-} 
-
-form input { 
-    width: 96%; 
-    padding: 10px; 
-    margin-bottom: 15px; 
-    border-radius: 4px; 
-    border: 2px solid var(--cor2); 
-    font-size: 16px; 
-} 
-
-form button { 
-    background-color: var(--cor1); 
-    color: var(--cor0); 
-    padding: 15px; 
-    width: 100%; 
-    border: none; 
-    border-radius: 4px; 
-    font-size: 16px; 
-    cursor: pointer; 
-} 
-
-form button:hover { 
-    background-color: var(--cor3); 
-}
- 
-ul { 
-    list-style: none; 
-    padding: 0; 
-} 
-
-ul li { 
-    background: var(--cor0); 
-    margin: 10px 0; 
-    padding: 15px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-} 
-
-ul li span { 
-    display: block; 
-    margin-bottom: 5px; 
-    font-size: 14px; 
-    color: var(--cor4); 
-} 
-
-/*adaptação do código*/
-
-/* Estilo financeiro */
-#tabelaFinanceira {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh; /* ocupa toda a altura da tela */
+  background-color: #1e1e2f; /* cor de fundo */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-#tabelaFinanceira th, #tabelaFinanceira td {
-    border: 1px solid var(--cor2);
-    padding: 10px;
-    text-align: center;
+/* ===== LOGO ===== */
+.sidebar .logo {
+  text-align: center;
+  padding: 28px 10px;
+  background-color: #29293d; /* Cor clara va parte da logo*/
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#tabelaFinanceira th {
-    
-    color: var(--cor0);
+.sidebar .logo h2 {
+  font-size: 1.4rem;
+  color: #4CAF50;
+  margin: 0;
 }
 
-#saldo {
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--cor0);
+/* ===== MENU ===== */
+.sidebar .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0px;
 }
 
-/* Estilo financeiro */
-#tabelaFinanceira {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border-radius: 8px;
-    overflow: hidden;
+.sidebar .menu ul li {
+  margin: 5px 0;
 }
 
-#tabelaFinanceira th, #tabelaFinanceira td {
-    border: 1px solid var(--cor2);
-    padding: 12px;
-    text-align: center;
+.sidebar .menu ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.3s, color 0.3s;
 }
 
-#tabelaFinanceira th {
-    
-    color: var(--cor0);
-    font-size: 16px;
+.sidebar .menu ul li a img {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  filter: brightness(0) invert(1); /* deixa os ícones brancos */
+  transition: transform 0.2s;
 }
 
-#tabelaFinanceira tr {
-    background-color: #f9f9f9;
+/* ===== HOVER ===== */
+.sidebar .menu ul li a:hover {
+  background-color: #33334d;
+  color: #fff;
 }
 
-.receita {
-    color: green;
-    font-weight: bold;
+.sidebar .menu ul li a:hover img {
+  transform: scale(1.1);
 }
 
-.despesa {
-    color: red;
-    font-weight: bold;
+/* ===== LINK ATIVO ===== */
+.sidebar .menu ul li.active a {
+  background-color: #4CAF50;
+  color: #fff;
+  font-weight: bold;
 }
 
-#saldo {
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 6px;
-    display: inline-block;
+.sidebar .menu ul li.active a img {
+  filter: brightness(0) invert(1);
 }
 
-.liquido {
-    font-weight: bold;
-    color: blue;
-}
-
-/*Complemento*/
-
-/* Estilo das abas */
-.tabs {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.tab-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    background: var(--cor2);
-    color: var(--cor1);
-    font-weight: bold;
-}
-
-.tab-btn.active {
-    background: var(--cor3);
-    color: var(--cor0);
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-/*branco*/
-/* Aba de histórico com fundo branco */
-#historico {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    color: #333; /* texto escuro para contraste */
-}
-
-/* Tabela do histórico */
-#tabelaHistorico {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-#tabelaHistorico th, #tabelaHistorico td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-#tabelaHistorico th {
-    background-color: #333;
-    color: #fff;
-    font-size: 16px;
-}
-
-#tabelaHistorico tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* Título da tabela de transações */
-#gestao h3 {
-    color: #ccc; /* deixa o texto branco */
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
+/* ======= Topbar (Header) ======= */
+.topbar {
+  margin-right: 12px;
+  position: fixed;
+  top: 0;
+  left: 242px; /* distância igual à largura do sidebar */
+  right: 0;
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: left; /* centraliza o título */
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 100;
+  padding: 0 40px; /* aproxima da barra de pesquis*/
+  width: 1282px; 
+  border-radius: 0 0 8px 8px;
 }
 
 
+/* ======= Título “Dashboard” ======= */
+.titulo-dashboard {
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
 
+/* ======= Barra de Pesquisa ======= */
+.search-bar {
+  padding: 8px 0px;
+  position: absolute;
+  right: 30px;
+  bottom: 1px;
+}
 
-/* Responsividade */ 
-@media (max-width: 768px) { 
-    form { 
-        padding: 15px; 
-    } 
-    ul li { 
-        padding: 10px; 
-    } 
+.search-bar input {
+  width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #666;
+}
+
+/* ====== Containers ====== */
+.cards-container {
+  margin: 98px 12px 0px 142px;
+  padding-left: 99px;
+  display: flex;        /* Coloca as caixas lado a lado (em linha) */
+  gap: 15px;            /* Espaço entre as caixas */
+  flex-wrap: wrap;      /* Permite quebrar para outra linha em telas pequenas */
+}
+
+.card {
+  flex: 1 1 200px;      /* Todas com mesma largura, mínimo de 200px */
+  background: #fff;  /* Cor de fundo clara */
+  padding: 12px;        /* Espaço interno */
+  border-radius: 8px;   /* Cantos arredondados */
+  text-align: center;   /* Centraliza o texto */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve */
+  text-align: center; /* Centraliza o conteúdo */
+  transition: all 0.3s ease; /* Animação suave no hover */
+  cursor: pointer; /* Mostra o cursor de clique */
+}
+
+.card:hover{
+  transform: translateY(-6px); /* Eleva o card levemente ao passar o mouse */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Sombra mais forte no hover */
+}
+
+.card h3 {
+  font-size: 20px; /* Tamanho do título */
+  color: #444; /* Cor do texto do título */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.card p {
+  font-size: 26px; /* Tamanho do número */
+  font-weight: bold; 
+  color: #4CAF50; /* Azul moderno */
+}
+
+/* ===== ÁREA PRINCIPAL ===== */
+.table {
+  margin: 13px 12px 0 242px;  /* Espaço acima e abaixo (40px) e centraliza horizontalmente */
+  padding: 20px 0px 20px 30px;
+  background-color: #fff;         /* Cor de fundo branca */
+  border-radius: 12px;            /* Arredonda os cantos do container */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve para destacar */
+}
+
+.table h3 {
+  margin-bottom: 20px;            /* Espaço abaixo do título */
+  text-align: center;               /* Alinha o título à esquerda */
+  font-size: 1.5rem;              /* Tamanho da fonte do título */
+  color: #333;                    /* Cor escura para o texto */
+}
+
+/* ===== ESTILIZAÇÃO DA TABELA ===== */
+.table table {
+  width: 100%;                    /* Faz a tabela ocupar toda a largura do container */
+  border-collapse: collapse;      /* Remove espaços entre bordas das células */
+  text-align: left;               /* Alinha todo o conteúdo da tabela à esquerda */
+}
+
+.table thead {
+  background-color: #f2f2f2;      /* Cor de fundo cinza claro para o cabeçalho */
+}
+
+.table th {
+  padding: 12px 15px;             /* Espaçamento interno das células do cabeçalho */
+  color: #333;                    /* Cor do texto do cabeçalho */
+  font-weight: 600;               /* Deixa o texto em negrito */
+  font-size: 0.95rem;             /* Define o tamanho da fonte das colunas */
+  border-bottom: 2px solid #ddd;  /* Linha de separação abaixo do cabeçalho */
+}
+
+.table td {
+  padding: 10px 15px;             /* Espaçamento interno das células de dados */
+  border-bottom: 1px solid #eee;  /* Linha de separação entre as linhas da tabela */
+  font-size: 0.93rem;             /* Tamanho de fonte um pouco menor que o cabeçalho */
+  color: #555;                    /* Cor do texto em cinza escuro */
+}
+
+/* ===== COR DE FUNDO ALTERNADA ===== */
+.table tbody tr:nth-child(even) {
+  background-color: #fafafa;      /* Linhas pares ficam com fundo levemente cinza */
+}
+
+/* ===== EFEITO AO PASSAR O MOUSE ===== */
+.table tbody tr:hover {
+  background-color: #f0f8ff;      /* Linha fica azulada ao passar o mouse */
+  transition: 0.2s ease-in-out;   /* Efeito de transição suave de cor */
+}
+
+/* ===== STATUS (opcional para destaque visual futuro) ===== */
+.table td:nth-child(4) {
+  font-weight: 600;               /* Destaca o status com texto mais forte */
+}
+
+/*Gráfico*/
+.graficos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 16px 0px 20px 242px;
+}
+
+.grafico-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 408px;
+}
+
+.grafico-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  color: #333;
 }
